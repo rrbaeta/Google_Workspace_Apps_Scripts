@@ -1,3 +1,18 @@
+function add_menu()
+{
+  var menu = SpreadsheetApp.getUi().createMenu('Custom');
+  menu.addItem('To Calendar Trigger', 'create_trigger');
+  menu.addToUi();
+}
+
+function create_trigger()
+{
+  ScriptApp.newTrigger('orders_func')
+      .timeBased()
+      .everyMinutes(5)
+      .create();
+}
+
 function orders_func() 
 {
   var spreadsheet = SpreadsheetApp.getActiveSheet();
